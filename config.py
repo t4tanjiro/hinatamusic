@@ -100,6 +100,33 @@ TELEGRAM_AUDIO_URL = "https://telegra.ph/file/48f39202823b358203234.jpg"
 TELEGRAM_VIDEO_URL = "https://telegra.ph/file/e575ae40d6635250974e1.jpg"
 STREAM_IMG_URL = "https://telegra.ph/file/03efec694e41e891b29dc.jpg"
 
+# ===== REQUIRED IMAGE URLS =====
+
+YOUTUBE_IMG_URL = getenv(
+    "YOUTUBE_IMG_URL",
+    "https://graph.org/file/2f7debf856695e0ef0607.png"
+)
+
+SOUNCLOUD_IMG_URL = getenv(
+    "SOUNCLOUD_IMG_URL",
+    "https://te.legra.ph/file/bb0ff85f2dd44070ea519.jpg"
+)
+
+SPOTIFY_ARTIST_IMG_URL = getenv(
+    "SPOTIFY_ARTIST_IMG_URL",
+    "https://te.legra.ph/file/37d163a2f75e0d3b403d6.jpg"
+)
+
+SPOTIFY_ALBUM_IMG_URL = getenv(
+    "SPOTIFY_ALBUM_IMG_URL",
+    "https://te.legra.ph/file/b35fd1dfca73b950b1b05.jpg"
+)
+
+SPOTIFY_PLAYLIST_IMG_URL = getenv(
+    "SPOTIFY_PLAYLIST_IMG_URL",
+    "https://te.legra.ph/file/95b3ca7993bbfaf993dcb.jpg"
+)
+
 # ⏱ Convert duration
 def time_to_seconds(time):
     stringt = str(time)
