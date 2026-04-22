@@ -6,120 +6,112 @@ from pyrogram import filters
 
 load_dotenv()
 
-# Get this value from my.telegram.org/apps
-API_ID = int(getenv("API_ID"))
-API_HASH = getenv("API_HASH")
+# 🔑 Telegram API
+API_ID = int(getenv("API_ID", 20574660))
+API_HASH = getenv("API_HASH", "6e21188e487b96af1ff5429dedada8ff")
 
-# Get your token from @BotFather on Telegram.
-BOT_TOKEN = getenv("BOT_TOKEN")
+# 🤖 Bot Token
+BOT_TOKEN = getenv("BOT_TOKEN", "8392700955:AAHnFaLUPxB1WY1NH109hRYh8lLwjWgKy2M")
 
-# Get your mongo url from cloud.mongodb.com
-MONGO_DB_URI = getenv("MONGO_DB_URI", None)
+# 🍃 MongoDB
+MONGO_DB_URI = getenv(
+    "MONGO_DB_URI",
+    "mongodb+srv://rahul:rahulkr@cluster0.szdpcp6.mongodb.net/?retryWrites=true&w=majority"
+)
 
-DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 60))
+# ⏱ Duration
+DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 17000))
 
-# Chat id of a group for logging bot's activities
-LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", None))
+# 📜 Logs
+LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", -1002317259468))
 
-# Get this value from @MissRose_Bot on Telegram by /id
-OWNER_ID = int(getenv("OWNER_ID", None))
+# 👑 Owner
+OWNER_ID = int(getenv("OWNER_ID", 7958077163))
 
-## Fill these variables if you're deploying on heroku.
-# Your heroku app name
+# 🔥 Sudo Users
+SUDOERS = list(map(int, getenv("SUDOERS", "7958077163 7091230649").split()))
+
+# 🌐 Heroku
 HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
-# Get it from http://dashboard.heroku.com/account
 HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
-API_URL = getenv("API_URL", 'https://api.nexgenbots.xyz') #youtube song url
-VIDEO_API_URL = getenv("VIDEO_API_URL", 'https://api.video.nexgenbots.xyz')
-API_KEY = getenv("API_KEY", None) # youtube song api key, generate free key or buy paid plan from https://console.nexgenbots.xyz
+# 🎵 APIs
+API_URL = getenv("API_URL", "https://api.nexgenbots.xyz")
+VIDEO_API_URL = getenv("VIDEO_API_URL", "https://api.video.nexgenbots.xyz")
+API_KEY = getenv("API_KEY", "30DxNexGenBotsbf4759")
 
+# 🔄 Repo Updater
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/CyberPixelPro/AviaxMusic",
+    "https://github.com/t4tanjiro/hinatamusic",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
-GIT_TOKEN = getenv(
-    "GIT_TOKEN", None
-)  # Fill this variable if your upstream repository is private
+GIT_TOKEN = getenv("GIT_TOKEN", None)
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/NexGenBots")
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/NexGenBotsIndia")
+# 📢 Support
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/tbotz_update")
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/TBOT_CHATS")
 
-# Set this to True if you want the assistant to automatically leave chats after an interval
-AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
+# 🤖 Assistant Auto Leave (FIXED)
+AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "True") == "True"
 
-# make your bots privacy from telegra.ph and put your url here 
-PRIVACY_LINK = getenv("PRIVACY_LINK", "https://telegra.ph/Privacy-Policy-for-AviaxMusic-08-14")
+# 🔐 Privacy
+PRIVACY_LINK = getenv(
+    "PRIVACY_LINK",
+    "https://telegra.ph/Privacy-Policy-for-AviaxMusic-08-14"
+)
 
+# 🎧 Spotify
+SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", "1c21247d714244ddbb09925dac565aed")
+SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", "709e1a2969664491b58200860623ef19")
 
-# Get this credentials from https://developer.spotify.com/dashboard
-SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", None)
-SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", None)
-
-
-# Maximum limit for fetching playlist's track from youtube, spotify, apple links.
+# 📂 Playlist limit
 PLAYLIST_FETCH_LIMIT = int(getenv("PLAYLIST_FETCH_LIMIT", 25))
 
+# 📦 File size limits
+TG_AUDIO_FILESIZE_LIMIT = int(getenv("TG_AUDIO_FILESIZE_LIMIT", 5242880000))
+TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 5242880000))
 
-# Telegram audio and video file size limit (in bytes)
-TG_AUDIO_FILESIZE_LIMIT = int(getenv("TG_AUDIO_FILESIZE_LIMIT", 104857600))
-TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 2145386496))
-# Checkout https://www.gbmb.org/mb-to-bytes for converting mb to bytes
+# 👤 Assistant Sessions
+STRING1 = getenv("STRING_SESSION", "BQE58cQAYQj5XYqYsdsndE8Mnrzz8wEkTNOZKyBWkTiwpnPeY_Awvr4QvAMkSdIExsaj6x1GOA-9A93RlXHVDhsRgRShGqwnFkX6P_XIllw5oUabFuupzvVmL3lbQFCDlpQOCk4UThd8twGM0rfKzllCno3ZBBowsN1ZHREBZXtBFVUy5K5urlNRNQRss8MN123FFLyD409Za6YlmAJ_bYa_CeMWuz98cEqHSLWh2r9eDoyTBctN6O0RxFhcFWEFUrOQ2mTPmfQqxsePFRGODT-KA1_ZpFKJSCZVZnwoFtNjz7BVa96thb2gu576E2Oo5t2uNbsIDMa2V1dXdYWVkEoNfAFIJAAAAABZAnQ-AA")
 
-
-# Get your pyrogram v2 session from Replit
-STRING1 = getenv("STRING_SESSION", None)
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
 STRING4 = getenv("STRING_SESSION4", None)
 STRING5 = getenv("STRING_SESSION5", None)
 
-
+# 🚫 Banned users
 BANNED_USERS = filters.user()
+
+# ⚙️ Runtime Data
 adminlist = {}
 lyrical = {}
 votemode = {}
 autoclean = []
 confirmer = {}
 
+# 🖼 Images
+START_IMG_URL = getenv("START_IMG_URL", "https://telegra.ph/file/cfbdee8103102bcb2e5da.jpg")
+PING_IMG_URL = getenv("PING_IMG_URL", "https://telegra.ph/file/00360393a15daf7fc4e9d.jpg")
 
-START_IMG_URL = getenv(
-    "START_IMG_URL", "https://files.catbox.moe/dkyy20.jpg"
-)
-PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://graph.org//file/389a372e8ae039320ca6c.png"
-)
-PLAYLIST_IMG_URL = "https://graph.org//file/3dfcffd0c218ead96b102.png"
-STATS_IMG_URL = "https://graph.org//file/99a8a9c13bb01f9ac7d98.png"
-TELEGRAM_AUDIO_URL = "https://graph.org//file/2f7debf856695e0ef0607.png"
-TELEGRAM_VIDEO_URL = "https://graph.org//file/2f7debf856695e0ef0607.png"
-STREAM_IMG_URL = "https://te.legra.ph/file/bd995b032b6bd263e2cc9.jpg"
-SOUNCLOUD_IMG_URL = "https://te.legra.ph/file/bb0ff85f2dd44070ea519.jpg"
-YOUTUBE_IMG_URL = "https://graph.org//file/2f7debf856695e0ef0607.png"
-SPOTIFY_ARTIST_IMG_URL = "https://te.legra.ph/file/37d163a2f75e0d3b403d6.jpg"
-SPOTIFY_ALBUM_IMG_URL = "https://te.legra.ph/file/b35fd1dfca73b950b1b05.jpg"
-SPOTIFY_PLAYLIST_IMG_URL = "https://te.legra.ph/file/95b3ca7993bbfaf993dcb.jpg"
+PLAYLIST_IMG_URL = "https://telegra.ph/file/d723f4c80da157fca1678.jpg"
+STATS_IMG_URL = "https://telegra.ph/file/d30d11c4365c025c25e3e.jpg"
+TELEGRAM_AUDIO_URL = "https://telegra.ph/file/48f39202823b358203234.jpg"
+TELEGRAM_VIDEO_URL = "https://telegra.ph/file/e575ae40d6635250974e1.jpg"
+STREAM_IMG_URL = "https://telegra.ph/file/03efec694e41e891b29dc.jpg"
 
-
+# ⏱ Convert duration
 def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
 
-
 DURATION_LIMIT = int(time_to_seconds(f"{DURATION_LIMIT_MIN}:00"))
 
-
+# ✅ URL validation
 if SUPPORT_CHANNEL:
     if not re.match("(?:http|https)://", SUPPORT_CHANNEL):
-        raise SystemExit(
-            "[ERROR] - Your SUPPORT_CHANNEL url is wrong. Please ensure that it starts with https://"
-        )
+        raise SystemExit("Invalid SUPPORT_CHANNEL URL")
 
 if SUPPORT_GROUP:
     if not re.match("(?:http|https)://", SUPPORT_GROUP):
-        raise SystemExit(
-            "[ERROR] - Your SUPPORT_GROUP url is wrong. Please ensure that it starts with https://"
-        )
-
-
+        raise SystemExit("Invalid SUPPORT_GROUP URL")
